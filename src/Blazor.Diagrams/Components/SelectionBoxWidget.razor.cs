@@ -36,7 +36,7 @@ namespace Blazor.Diagrams.Components
 
             var options = Diagram.Options.Panning;
 
-            switch (options.MouseModifierKey)
+            switch (options.TouchModifierKey)
             {
                 case ModifierKeyEnum.None:
                     if (e.CtrlKey || e.ShiftKey || e.AltKey)
