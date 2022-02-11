@@ -26,8 +26,8 @@ namespace SharedDemo.Demos
         {
             _diagram.Options.SelectionBox.MouseButton = MouseButtonEnum.Left;
             _diagram.Options.SelectionBox.MouseModifierKey = ModifierKeyEnum.None;
-            _diagram.Options.Panning.MouseButton = MouseButtonEnum.Left;
-            _diagram.Options.Panning.MouseModifierKey = ModifierKeyEnum.Shift;
+            _diagram.Options.Panning.MouseButton = MouseButtonEnum.Middle;
+            _diagram.Options.Panning.MouseModifierKey = ModifierKeyEnum.None;
 
             var node1 = new NodeModel(new Point(80, 80), shape: Shapes.Rectangle);
             var node2 = new NodeModel(new Point(280, 80), shape: Shapes.Rectangle);
