@@ -25,6 +25,8 @@ namespace Blazor.Diagrams.Core
         public DiagramLinkOptions Links { get; set; } = new DiagramLinkOptions();
         public DiagramGroupOptions Groups { get; set; } = new DiagramGroupOptions();
         public DiagramConstraintsOptions Constraints { get; set; } = new DiagramConstraintsOptions();
+        public DiagramSelectionBoxOptions SelectionBox { get; set; } = new DiagramSelectionBoxOptions();
+        public DiagramPanningOptions Panning { get; set; } = new DiagramPanningOptions();
     }
 
     /// <summary>
@@ -92,4 +94,47 @@ namespace Blazor.Diagrams.Core
         [Description("Decide if a group can/should be deleted")]
         public Func<GroupModel, bool> ShouldDeleteGroup { get; set; } = _ => true;
     }
+
+    /// <summary>
+    /// Options regarding the SelectionBoxWidget
+    /// </summary>
+    public class DiagramSelectionBoxOptions
+    {
+        [Description("Mouse button used for creating a selection box.")]
+        public MouseButtonEnum MouseButton { get; set; } = MouseButtonEnum.Left;
+        [Description("Modifier key for creating a selection box.")]
+        public ModifierKeyEnum MouseModifierKey { get; set; } = ModifierKeyEnum.Shift;
+        [Description("Touch modifier key for creating a selection box.")]
+        public ModifierKeyEnum TouchModifierKey { get; set; } = ModifierKeyEnum.Shift;
+    }
+
+    /// <summary>
+    /// Options regarding the PanBehavior
+    /// </summary>
+    public class DiagramPanningOptions
+    {
+        [Description("Mouse button used for panning.")]
+        public MouseButtonEnum MouseButton { get; set; } = MouseButtonEnum.Left;
+        [Description("Modifier key for panning")]
+        public ModifierKeyEnum MouseModifierKey { get; set; } = ModifierKeyEnum.None;
+        [Description("Touch modifier key for panning")]
+        public ModifierKeyEnum TouchModifierKey { get; set; } = ModifierKeyEnum.None;
+
+    }
+
+    #region Enums
+    public enum MouseButtonEnum
+    {
+        Left = 0,
+        Middle = 1,
+        Right = 2,
+    }
+    public enum ModifierKeyEnum
+    {
+        None,
+        Ctrl,
+        Shift,
+        Alt,
+    }
+    #endregion
 }

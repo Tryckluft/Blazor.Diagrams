@@ -1,0 +1,10 @@
+﻿@page "/demos/selection-box"
+@*TODO: SelectionBox does not render correctly in the DemoLayout*@
+@*@layout DemoLayout*@
+@layout EmptyLayout
+@inject LayoutData LayoutData
+
+<CascadingValue Value="_diagram">
+    <DiagramCanvas></DiagramCanvas>
+    <SelectionBoxWidget ></SelectionBoxWidget>
+</CascadingValue>
