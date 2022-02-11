@@ -1,4 +1,4 @@
-﻿@((MarkupString)$"<foreignObject x=\"{X.ToInvariantString()}\" y=\"{Y.ToInvariantString()}\"><div class=\"link-label\">{Label.Content}</div></foreignObject>")
+﻿@((MarkupString)$"<foreignObject x=\"{X.ToInvariantString()}\" y=\"{Y.ToInvariantString()}\" width=\"1\" height=\"1\"><div class=\"link-label\">{Label.Content}</div></foreignObject>")
 
 @code {
     [Parameter] public LinkLabelModel Label { get; set; }
