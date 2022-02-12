@@ -2,6 +2,7 @@
 using Blazor.Diagrams.Core.Models.Base;
 using Microsoft.AspNetCore.Components.Web;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Blazor.Diagrams.Core
@@ -20,6 +21,8 @@ namespace Blazor.Diagrams.Core
         public bool AllowPanning { get; set; } = true;
         [Description("Only render visible nodes")]
         public bool EnableVirtualization { get; set; } = true;
+        [Description("Mouse buttons used for selecting nodes.")]
+        public List<MouseButtonEnum> SelectionMouseButtons { get; set; } = new List<MouseButtonEnum> { MouseButtonEnum.Left, MouseButtonEnum.Right };
 
         public DiagramZoomOptions Zoom { get; set; } = new DiagramZoomOptions();
         public DiagramLinkOptions Links { get; set; } = new DiagramLinkOptions();
@@ -103,7 +106,7 @@ namespace Blazor.Diagrams.Core
         [Description("Mouse button used for creating a selection box.")]
         public MouseButtonEnum MouseButton { get; set; } = MouseButtonEnum.Left;
         [Description("Modifier key for creating a selection box.")]
-        public ModifierKeyEnum MouseModifierKey { get; set; } = ModifierKeyEnum.Shift;
+        public ModifierKeyEnum MouseModifierKey { get; set; } = ModifierKeyEnum.None;
         [Description("Touch modifier key for creating a selection box.")]
         public ModifierKeyEnum TouchModifierKey { get; set; } = ModifierKeyEnum.Shift;
     }
@@ -114,7 +117,7 @@ namespace Blazor.Diagrams.Core
     public class DiagramPanningOptions
     {
         [Description("Mouse button used for panning.")]
-        public MouseButtonEnum MouseButton { get; set; } = MouseButtonEnum.Left;
+        public MouseButtonEnum MouseButton { get; set; } = MouseButtonEnum.Middle;
         [Description("Modifier key for panning")]
         public ModifierKeyEnum MouseModifierKey { get; set; } = ModifierKeyEnum.None;
         [Description("Touch modifier key for panning")]

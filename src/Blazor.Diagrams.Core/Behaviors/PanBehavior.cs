@@ -65,7 +65,8 @@ namespace Blazor.Diagrams.Core.Behaviors
             if (!Diagram.Options.AllowPanning)
                 return;
 
-            if (model != null)
+            //Do not allow panning by clicking nodes if selection and panning use the same mouse button.
+            if (model != null && Diagram.Options.SelectionMouseButtons.Contains(Diagram.Options.Panning.MouseButton)) 
                 return;
 
             var options = Diagram.Options.Panning;

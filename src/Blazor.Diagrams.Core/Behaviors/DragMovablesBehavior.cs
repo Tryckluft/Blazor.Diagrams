@@ -30,11 +30,29 @@ namespace Blazor.Diagrams.Core.Behaviors
 
         private void OnTouchEnd(Model model, TouchEventArgs e) => End();
 
-        private void OnMouseDown(Model model, MouseEventArgs e) => Start(model, e.ClientX, e.ClientY);
+        private void OnMouseDown(Model model, MouseEventArgs e)
+        {
+            if (!Diagram.Options.SelectionMouseButtons.Contains((MouseButtonEnum)e.Button))
+                return;
 
-        private void OnMouseMove(Model model, MouseEventArgs e) => Move(e.ClientX, e.ClientY);
+            Start(model, e.ClientX, e.ClientY);
+        }
 
-        private void OnMouseUp(Model model, MouseEventArgs e) => End();
+        private void OnMouseMove(Model model, MouseEventArgs e)
+        {
+            if (!Diagram.Options.SelectionMouseButtons.Contains((MouseButtonEnum)e.Button))
+                return;
+
+            Move(e.ClientX, e.ClientY);
+        }
+
+        private void OnMouseUp(Model model, MouseEventArgs e)
+        {
+            if (!Diagram.Options.SelectionMouseButtons.Contains((MouseButtonEnum)e.Button))
+                return;
+
+            End();
+        }
 
         private void Start(Model model, double clientX, double clientY)
         {

@@ -13,7 +13,13 @@ namespace Blazor.Diagrams.Core.Behaviors
 
         private void OnTouchStart(Model model, TouchEventArgs e) => Process(model, e.CtrlKey);
 
-        private void OnMouseDown(Model model, MouseEventArgs e) => Process(model, e.CtrlKey);
+        private void OnMouseDown(Model model, MouseEventArgs e)
+        {
+            if (!Diagram.Options.SelectionMouseButtons.Contains((MouseButtonEnum)e.Button))
+                return;
+
+            Process(model, e.CtrlKey);
+        }
 
         private void Process(Model model, bool ctrlKey)
         {
