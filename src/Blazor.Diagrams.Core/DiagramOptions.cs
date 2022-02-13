@@ -63,7 +63,7 @@ namespace Blazor.Diagrams.Core
         [Description("Whether to allow zooming or not")]
         public bool Enabled { get; set; } = true;
         [Description("Whether to inverse the zoom direction or not")]
-        public bool Inverse { get; set; }
+        public bool Inverse { get; set; } = true;
         [Description("Minimum value allowed")]
         public double Minimum { get; set; } = 0.1;
         [Description("Maximum value allowed")]

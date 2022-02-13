@@ -238,6 +238,49 @@ namespace Blazor.Diagrams.Core
             }
         }
 
+        public void SelectAll()
+        {
+            foreach (var node in Nodes)
+            {
+                if (node.Selected)
+                    continue;
+
+                node.Selected = true;
+                node.Refresh();
+                SelectionChanged?.Invoke(node);
+            }
+
+            foreach (var link in Links)
+            {
+                foreach (var vertex in link.Vertices)
+                {
+                    if (vertex.Selected)
+                        continue;
+
+                    vertex.Selected = true;
+                    vertex.Refresh();
+                    SelectionChanged?.Invoke(vertex);
+                }
+
+                if (link.Selected)
+                    continue;
+
+                link.Selected = true;
+                link.Refresh();
+                SelectionChanged?.Invoke(link);
+            }
+
+            foreach (var group in Groups)
+            {
+                if (group.Selected)
+                    continue;
+
+                group.Selected = true;
+                group.Refresh();
+                SelectionChanged?.Invoke(group);
+            }
+        }
+
         #endregion
 
         #region Behaviors
